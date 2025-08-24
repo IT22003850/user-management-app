@@ -3,11 +3,13 @@ const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
+const PORT = process.env.PORT || 5001;
 
-dotenv.config();
+
 
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
@@ -93,4 +95,6 @@ app.get('/api/users', authenticateToken, (req, res) => {
   });
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+});
