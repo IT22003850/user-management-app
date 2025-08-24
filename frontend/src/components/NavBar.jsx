@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-600 text-white shadow-lg">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold">User App</Link>
+        <Link to="/" className="text-2xl font-bold">User Management App</Link>
         <div className="space-x-4">
           <Link to="/" className="hover:text-blue-200 transition">Home</Link>
           {!token ? (

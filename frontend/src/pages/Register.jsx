@@ -13,20 +13,27 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // handle multiple select properly
   const handleHobbyChange = (e) => {
-    const value = e.target.value;
-    setHobbies((prev) => prev.includes(value) ? prev.filter(h => h !== value) : [...prev, value]);
+    const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+    setHobbies(selectedOptions);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5000/api/register', {
-        name, email, password, gender, hobbies, skill_level: skillLevel, bio
+        name, 
+        email, 
+        password, 
+        gender, 
+        hobbies, 
+        skill_level: skillLevel, 
+        bio
       });
       navigate('/login');
     } catch (err) {
-      setError('Registration failed');
+      setError(err.response?.data?.error || 'Registration failed. Please try again.');
     }
   };
 
@@ -36,7 +43,8 @@ const Register = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Register</h2>
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
-        <div onSubmit={handleSubmit} className="space-y-4">
+        {/* ✅ Use form instead of div */}
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input 
             type="text" 
             placeholder="Name" 
@@ -120,8 +128,7 @@ const Register = () => {
           </div>
           
           <button 
-            type="submit" 
-            onClick={handleSubmit}
+            type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition font-semibold"
           >
             Register
@@ -129,7 +136,7 @@ const Register = () => {
           <p className="mt-4 text-sm text-center text-gray-600">
             Already have an account? <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
