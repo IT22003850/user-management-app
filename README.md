@@ -17,7 +17,7 @@ A full-stack web app with React frontend, Node.js/Express backend, and MySQL dat
 2. **Frontend**:
    - Navigate to `frontend/`
    - Run `npm install`
-   - Run `npm start` (runs on http://localhost:3000)
+   - Run `npm start` (runs on http://localhost:5173)
 
 3. **Database**:
    - Create MySQL database `usersdb`
