@@ -31,3 +31,15 @@ A full-stack web app with React frontend, Node.js/Express backend, and MySQL dat
 ## Security Notes
 - Passwords hashed with bcrypt
 - JWT for auth (expires in 1h)
+
+## Screenshots
+- **Login**:  
+  ![Login Page](screenshots/login.png)
+- **Register**:  
+  ![Register Page](screenshots/register.png)
+- **Home (Logged In)**:  
+  ![Home Page Logged In](screenshots/home2.png)
+- **Home (Not Logged In)**:  
+  ![Home Page Not Logged In](screenshots/home1.png)
+- **User List**:  
+  ![User List Page](screenshots/userList.png)
