@@ -35,14 +35,19 @@ const User = {
       callback
     );
   },
+
+  update: (id, userData, callback) => {
+    const { name, email, gender, hobbies, skill_level, bio } = userData;
+    db.query(
+      "UPDATE users SET name=?, email=?, gender=?, hobbies=?, skill_level=?, bio=? WHERE id=?",
+      [name, email, gender, hobbies, skill_level, bio, id],
+      callback
+    );
+  },
+
+  delete: (id, callback) => {
+    db.query("DELETE FROM users WHERE id=?", [id], callback);
+  },
 };
 
-update: (id, userData, callback) => {
-  const { name, email, gender, hobbies, skill_level, bio } = userData;
-  db.query(
-    "UPDATE users SET name=?, email=?, gender=?, hobbies=?, skill_level=?, bio=? WHERE id=?",
-    [name, email, gender, hobbies, skill_level, bio, id],
-    callback
-  );
-},
-  (module.exports = User);
+module.exports = User;
