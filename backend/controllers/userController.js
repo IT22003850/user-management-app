@@ -45,3 +45,25 @@ exports.getUsers = (req, res) => {
     res.json(users);
   });
 };
+
+exports.updateUser = (req, res) => {
+  const { id } = req.params;
+  const { name, email, gender, hobbies, skill_level, bio } = req.body;
+
+  const hobbiesStr = hobbies && Array.isArray(hobbies) ? hobbies.join(',') : null;
+
+  User.update(
+    id,
+    { name, email, gender, hobbies: hobbiesStr, skill_level, bio },
+    (err, result) => {
+      if (err) return res.status(500).json({ error: 'Failed to update user' });
+      if (result.affectedRows === 0) return res.status(404).json({ error: 'User not found' });
+      res.json({ message: 'User updated successfully' });
+    }
+  );
+};
+
+
+exports.deleteUser = (req, res) => {
+  
+}
