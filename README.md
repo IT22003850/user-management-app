@@ -57,7 +57,4 @@ Features:
   ![Home Page Not Logged In](screenshots/home1.png)
 - **User List**:  
   ![User List Page](screenshots/userList.png)
-- **Update User**:  
-  ![Update User](screenshots/update.png)
-- **Delete User**:  
-  ![Delete User](screenshots/delete.png)
+
