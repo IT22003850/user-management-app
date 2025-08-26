@@ -1,7 +1,12 @@
 # Simple User Management App
 
 ## Overview
-A full-stack web app with React frontend, Node.js/Express backend, and MySQL database. Features user registration, login with JWT auth, and a protected user list page displaying extra user details.
+A full-stack web app with React frontend, Node.js/Express backend, and MySQL database.  
+Features:
+- User registration  
+- Login with JWT authentication  
+- Protected user list page with extra details  
+- Update and delete users  
 
 ## Prerequisites
 - Node.js
@@ -11,26 +16,35 @@ A full-stack web app with React frontend, Node.js/Express backend, and MySQL dat
 1. **Backend**:
    - Navigate to `backend/`
    - Run `npm install`
-   - Create `.env` with DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, JWT_SECRET
-   - Run `npm start` (runs on http://localhost:5000)
+   - Create `.env` with:
+     ```
+     DB_HOST=your_db_host
+     DB_USER=your_db_user
+     DB_PASSWORD=your_db_password
+     DB_NAME=usersdb
+     JWT_SECRET=your_secret_key
+     ```
+   - Run `npm start` (backend runs on http://localhost:5000)
 
 2. **Frontend**:
    - Navigate to `frontend/`
    - Run `npm install`
-   - Run `npm run dev` (runs on http://localhost:5173)
+   - Run `npm run dev` (frontend runs on http://localhost:5173)
 
 3. **Database**:
    - Create MySQL database `usersdb`
-   - Table auto-creates on backend start
+   - Tables auto-create on backend start
 
 ## Usage
-- Register at /register
-- Login at /
-- View users at /users (protected)
+- **Register**: `/register`
+- **Login**: `/`
+- **User List (Protected)**: `/users`
+- **Update User**: From the user list, edit details of an existing user
+- **Delete User**: From the user list, remove a user
 
 ## Security Notes
 - Passwords hashed with bcrypt
-- JWT for auth (expires in 1h)
+- JWT for authentication (expires in 1 hour)
 
 ## Screenshots
 - **Login**:  
@@ -43,3 +57,7 @@ A full-stack web app with React frontend, Node.js/Express backend, and MySQL dat
   ![Home Page Not Logged In](screenshots/home1.png)
 - **User List**:  
   ![User List Page](screenshots/userList.png)
+- **Update User**:  
+  ![Update User](screenshots/update.png)
+- **Delete User**:  
+  ![Delete User](screenshots/delete.png)
