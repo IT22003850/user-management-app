@@ -1,4 +1,4 @@
-const db = require('../config/dbConfig');
+const db = require("../config/dbConfig");
 
 // Create users table if not exists
 db.query(`
@@ -16,24 +16,33 @@ db.query(`
 
 const User = {
   create: (userData, callback) => {
-    const { name, email, password, gender, hobbies, skill_level, bio } = userData;
+    const { name, email, password, gender, hobbies, skill_level, bio } =
+      userData;
     db.query(
-      'INSERT INTO users (name, email, password, gender, hobbies, skill_level, bio) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      "INSERT INTO users (name, email, password, gender, hobbies, skill_level, bio) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [name, email, password, gender, hobbies, skill_level, bio],
       callback
     );
   },
 
   findByEmail: (email, callback) => {
-    db.query('SELECT * FROM users WHERE email = ?', [email], callback);
+    db.query("SELECT * FROM users WHERE email = ?", [email], callback);
   },
 
   findAll: (callback) => {
     db.query(
-      'SELECT id, name, email, gender, hobbies, skill_level, bio FROM users',
+      "SELECT id, name, email, gender, hobbies, skill_level, bio FROM users",
       callback
     );
-  }
+  },
 };
 
-module.exports = User;
+update: (id, userData, callback) => {
+  const { name, email, gender, hobbies, skill_level, bio } = userData;
+  db.query(
+    "UPDATE users SET name=?, email=?, gender=?, hobbies=?, skill_level=?, bio=? WHERE id=?",
+    [name, email, gender, hobbies, skill_level, bio, id],
+    callback
+  );
+},
+  (module.exports = User);
