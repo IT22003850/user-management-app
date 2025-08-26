@@ -65,5 +65,12 @@ exports.updateUser = (req, res) => {
 
 
 exports.deleteUser = (req, res) => {
-  
-}
+  const { id } = req.params;
+
+  User.delete(id, (err, result) => {
+    if (err) return res.status(500).json({ error: 'Failed to delete user' });
+    if (result.affectedRows === 0) return res.status(404).json({ error: 'User not found' });
+    res.json({ message: 'User deleted successfully' });
+  });
+};
+
